@@ -1,0 +1,12 @@
+.product-card {
+  border: 2px solid black;
+  border-radius: 5px;
+
+  &__product-name {
+  color: blue;
+  }
+
+  &__product-price {
+  color: aquamarine;
+  }
+}
