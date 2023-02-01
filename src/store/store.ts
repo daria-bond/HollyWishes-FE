@@ -1,12 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import MoneyReducer from "../modules/MoneyReceiver/store/reducer";
 
-// const rootReducer = () =>
-//   combineReducers({
-//     Start: ,
-//   });
+const rootReducer = combineReducers({
+  vendingMachineData: MoneyReducer,
+});
 
 export const store = configureStore({
-  reducer: {},
+  reducer: rootReducer,
   devTools: true,
 });
 

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 interface IButton {
-  title: string;
+  title: string | number;
   onClick: () => void;
 }
 

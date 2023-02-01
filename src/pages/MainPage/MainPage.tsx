@@ -1,7 +1,14 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
+import { MoneyReceiver } from "../../modules/MoneyReceiver";
 
 const MainPage: FC = () => {
-  return <div>12345</div>;
+  const [amountMoney, setAmountMoney] = useState(0);
+
+  return (
+    <div>
+      <MoneyReceiver amount={amountMoney} setAmount={setAmountMoney} />
+    </div>
+  );
 };
 
 export default MainPage;
