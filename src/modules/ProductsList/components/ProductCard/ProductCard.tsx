@@ -1,12 +1,21 @@
 import React, { FC } from "react";
 import "./ProductCard.scss";
+import Button from "../../../../ui/Button/Button";
 
-const ProductCard: FC<IProduct> = ({ name, price, count }) => {
+interface IProps {
+  name: string;
+  price: number;
+  quantity: number;
+  onClick: () => void;
+}
+
+const ProductCard: FC<IProps> = ({ name, price, quantity, onClick }) => {
   return (
     <div className="product-card">
       <h3 className="product-card__product-name">{name}</h3>
       <h4 className="product-card__product-price">Цена: {price}₽</h4>
-      <h4 className="product-card__product-price">Количество: {count}шт</h4>
+      <h4 className="product-card__product-price">Количество: {quantity}шт</h4>
+      {quantity > 0 && <Button title="Купить" onClick={onClick} />}
     </div>
   );
 };

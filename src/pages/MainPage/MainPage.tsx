@@ -1,12 +1,21 @@
-import React, { FC, useState } from "react";
+import React, { FC, useCallback, useState } from "react";
 import { MoneyReceiver } from "../../modules/MoneyReceiver";
+import { ProductsList } from "../../modules/ProductsList";
 
 const MainPage: FC = () => {
-  const [amountMoney, setAmountMoney] = useState(0);
+  const [orderProducts, setOrderProducts] = useState<number[]>([]);
+
+  const addProductsToOrder = useCallback(
+    (ids: number[]) => {
+      setOrderProducts([...orderProducts, ...ids]);
+    },
+    [orderProducts]
+  );
 
   return (
     <div>
-      <MoneyReceiver amount={amountMoney} setAmount={setAmountMoney} />
+      <MoneyReceiver />
+      <ProductsList addProductsToOrder={addProductsToOrder} />
     </div>
   );
 };
