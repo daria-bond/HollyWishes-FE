@@ -1,46 +1,109 @@
-# Getting Started with Create React App
+# Ссылка на задание
+https://drive.google.com/file/d/1SIJGUHkCTfdqESb8I-1rpsoqt_EMH0q5/view?usp=sharing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Чтобы запустить проект необходимо:
 
-## Available Scripts
+### 1. Cклонить его с помощью команды
+### `git clone https://github.com/daria-bond/HollyWishes-FE.git`
 
-In the project directory, you can run:
+### 2. Установить node modules с помощью команды
+### `npm install`
 
-### `npm start`
+### 3. Запустить проект с помощью команды
+### `npm run start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Ниже ответы на вопросы из задания
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 1. Объясните своими словами что такое EventLoop, как он работает и зачем нужен в JS’е?
+EventLoop это бесконечный цикл в который попадают все функции.
 
-### `npm test`
+Для EventLoop все функции делятся на 3 типа:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- таски
+- микротаски
+- рендер
 
-### `npm run build`
+EventLoop выполняет одну задачу из категории таски, потом все задачи из категории микротаски, затем задачи по рендеру, затем цикл начинается снова. Если задач какого-то типа нет, EventLoop пропускает этот тип задач и идет дальше по циклу.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Я бы сказала, что EventLoop является частью механизма, который реализует имитации "многопоточности"/"параллелизма"/асинхронности (также туда можно отнести стек вызовов, очередь задач и web api), для этого механизма он нужен, а также для упорядоченного выполнения задач.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Что такое closure (замыкание)?
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Замыкание - возможность функции "запоминать" лексическое окружение в котором она создана и использовать его.
 
-### `npm run eject`
+### 3. С помощью какого протокола чаще всего идет общение клиент-сервер?
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Чаще всего используется HTTP/HTTPS.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 4. Знаете ли вы про REST API? Можете описать что это?
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+REST API - это подход к написанию API основанный на HTTP протоколе. Данные подход накладывает некоторые ограничения на архитектуру, чтобы добиться оптимальной работы в большинстве случаев.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Для написания RESTful API необходимо соблюдать определенные правила (ограничения):
 
-## Learn More
+- разделение клиент - сервер. На клиенте мы создаем запрос и отправляем его, а на сервере обрабатываем данные и отдаем ответ;
+- отсутствие записей о сессиях на сервере. В запросе содержится все необходимая информация для получения ответа, но не больше.
+- сохранение кеша. Возможность указать в запросе необходимо ли кешировать ответ в буфер и возможность при необходимости к нему обращаться.
+- многоуровневость системы (слои). Серверы могут располагаться на разных уровнях (слоях) и при этом иметь связи только с ближайшими к нему уровнями (слоями). Промежуточные серверы могут, напрмер6 кешировать данные.
+- код по запросу (необязательное ограничение). Возможно расширение функциональности клиента за счет загрузки кода с сервера.
+- стандартизация интерфейсов. При создании url, необходимо подумать о "ресурсах", которые есть в вашем приложении, а что сделать с "ресурсом" подскажет метод запроса.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Пример ниже:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+GET /users - получение всех пользователей
+
+POST /users - создание пользователя
+
+PUT /users/id - редактирование пользователя
+
+DELETE /users/id - удаление пользователя
+
+В данном примере все маршруты выглядят одинаково, в некоторых только добавляется id, это и подразумевается под стандартизацией интерфейсов.
+
+Использовать принципы REST можно и не все сразу, даже минимальное использование этих принципов сделает API более гибким и масштабируемым.
+
+### 5. Зачем нужен TypeScript? В чем отличия от JavaScript?
+TS - это надстройка над JS.
+
+TS - это "жестко" типизированный язык.
+
+JS - это динамически типизируемый язык.
+
+Наличие строгой типизации - главное отличие TS от JS. Также в TS есть больше возможностей для реализации ООП подхода. Например, в TS есть модификаторы доступа.
+
+TS нужен для:
+
+- "жесткого" назначения типов для переменных и функций и за счет этого уменьшения количества ошибок из-за несоответствия типов;
+- упрощения использования ООП;
+- улучшения читаемости кода.
+
+### 6. Что такое DOM, CSSOM?
+DOM - Document Object Model или объектная модель документа - это модель HTML-документа создаваемая браузером. Модель выглядит как дерево тегов. DOM является объектом.
+
+CSSOM - CSS Object Model или объектная модель CSS - это модель (объект) в которой описаны стили для каждого узла DOM, имеет ту же структуру что и DOM.
+
+### 7. Опишите процесс всплытия событий (event bubbling).
+
+При нажатии на элемент сначала сработает onclick на целевом элементе, затем сработает onclick на его родителе, затем на родителе родителя и так далее.
+
+То есть событие клика затрагивает целевой элемент и все его родительские элементы вплоть до document.
+
+### 8. Чем вам нравится frontend разработка? Как давно занимаетесь ею? Что хотите попробовать?
+Мне нравиться:
+
+- то, что я могу сразу видеть результат своей работы;
+- делать визуально красивые вещи;
+- то, что люди будут пользоваться результатом моей работы;
+- то, что все работает максимально логично;
+- разбираться в том, как все работает.
+
+Программироваем начала заниматься в начале 2021. В мае 2021 года я пошла на стажировку в IT комапнию, затем работала на позиции frontend-разработчика. Мой общий стаж разработки около года.
+
+Хочу попробовать :
+
+- настраивать webpack;
+- SSR;
+- использовать микрофронтенды;
+- websocket;
+- google или яндекс карты;
+- написать авторизацию с помощью разных сервисов (яндекс, google и тд)
