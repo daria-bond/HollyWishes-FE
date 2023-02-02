@@ -4,7 +4,7 @@ https://drive.google.com/file/d/1SIJGUHkCTfdqESb8I-1rpsoqt_EMH0q5/view?usp=shari
 ## Чтобы запустить проект необходимо:
 
 ### 1. Cклонить его с помощью команды
-### `git clone https://github.com/daria-bond/HollyWishes-FE.git`
+### `https://github.com/daria-bond/test_renue.git`
 
 ### 2. Установить node modules с помощью команды
 ### `npm install`
