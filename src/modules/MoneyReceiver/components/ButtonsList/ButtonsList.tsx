@@ -4,6 +4,7 @@ import {
   banknoteDenominals,
   BanknoteEnum,
 } from "../../../../store/types/banknoteTypes";
+import "../ButtonsList/ButtonsList.scss";
 
 interface IButtonList {
   array: BanknoteEnum[];
@@ -12,7 +13,7 @@ interface IButtonList {
 
 const ButtonsList: FC<IButtonList> = ({ array, onClick }) => {
   return (
-    <div>
+    <div className="buttons-list-container">
       {array.map((element) => (
         <Button
           title={banknoteDenominals[element]}

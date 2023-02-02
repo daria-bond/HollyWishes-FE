@@ -12,6 +12,7 @@ import { decrementProductQuantity } from "../../../ProductsList/store/reducer";
 import { setBanknotes } from "../../../MoneyReceiver/store/banknotesReducer";
 import { IProduct } from "../../../../store/types/productTypes";
 import ModalBox from "../../../../ui/Modal/Modal";
+import "../IssuanceOfChange/IssuanceOfChange.scss";
 
 interface IBanknoteForChange {
   type: BanknoteEnum;
@@ -142,13 +143,15 @@ export const IssuanceOfChange: FC = () => {
   }, [banknotes, dispatch, getReturnBanknotes, products]);
 
   return (
-    <div>
-      <Button
-        title={"Верните мне мои деньги!"}
-        onClick={() => {
-          returnMoney();
-        }}
-      />
+    <div className="issuance-of-change-container">
+      {moneyAmount != 0 && (
+        <Button
+          title={"Верните мне мои деньги!"}
+          onClick={() => {
+            returnMoney();
+          }}
+        />
+      )}
       <ModalBox
         onClose={handleClose}
         modalMessage={modalMessage}

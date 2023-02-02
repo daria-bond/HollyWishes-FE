@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Modal } from "@mui/material";
+import "../Modal/Modal.scss";
 
 interface IProps {
   openModalBox: boolean;
@@ -10,19 +11,7 @@ interface IProps {
 const ModalBox: FC<IProps> = ({ openModalBox, onClose, modalMessage }) => {
   return (
     <Modal open={openModalBox} onClose={onClose}>
-      <div
-        style={{
-          background: "green",
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: 400,
-          border: "2px solid #000",
-        }}
-      >
-        {modalMessage}
-      </div>
+      <div className="modal-content-container">{modalMessage}</div>
     </Modal>
   );
 };

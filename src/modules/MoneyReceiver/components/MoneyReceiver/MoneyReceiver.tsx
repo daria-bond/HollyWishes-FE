@@ -8,6 +8,7 @@ import {
 } from "../../../../store/types/banknoteTypes";
 import { addBanknote } from "../../store/banknotesReducer";
 import { addMoney } from "../../store/moneyReducer";
+import "../MoneyReceiver/MoneyReceiver.scss";
 
 export const MoneyReceiver: FC = () => {
   const dispatch = useAppDispatch();
@@ -22,9 +23,11 @@ export const MoneyReceiver: FC = () => {
   );
 
   return (
-    <div>
+    <div className="money-receiver-container">
       <ButtonsList array={BanknotesForReceiving} onClick={onClick} />
-      <h4>Внесено: {moneyAmount}</h4>
+      <div className="money-receiver-container__amount">
+        Внесено: {moneyAmount}
+      </div>
     </div>
   );
 };

@@ -20,7 +20,7 @@ export const ProductsList: FC = () => {
       if (moneyAmount >= price) {
         dispatch(removeMoney(price));
         dispatch(decrementProductQuantity(id));
-        setModalMessage(<div>Вы купили {name}</div>);
+        setModalMessage(<div>Вы купили {name} !</div>);
       } else {
         setModalMessage(<div>Денежек не хватает :(</div>);
       }
