@@ -7,11 +7,11 @@ import "../MainPage/MainPage.scss";
 const MainPage: FC = () => {
   return (
     <div className="main-page-container">
-      <ProductsList />
-      <div>
+      <div className="main-page-container__secondary-container">
         <MoneyReceiver />
         <IssuanceOfChange />
       </div>
+      <ProductsList />
     </div>
   );
 };

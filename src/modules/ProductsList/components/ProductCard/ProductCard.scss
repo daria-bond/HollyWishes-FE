@@ -1,13 +1,25 @@
 .product-card {
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #ababab;
+  padding: 10px;
+  border-radius: 10px;
+  width: 250px;
+  box-shadow: 3px 3px 5px #c9c9c9;
 
   &__product-name {
-  color: blue;
+    font-size: 25px;
+    padding-bottom: 5px;
   }
 
-  &__product-price {
-  color: aquamarine;
+  &__product-quantity {
+    padding-bottom: 5px;
+  }
+
+  &__product-quantity-zero {
+    padding-bottom: 5px;
+    color: crimson;
   }
 }
