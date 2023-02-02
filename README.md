@@ -1,6 +1,9 @@
 # Ссылка на задание
 https://drive.google.com/file/d/1SIJGUHkCTfdqESb8I-1rpsoqt_EMH0q5/view?usp=sharing
 
+# Ссылка на задеплоенную версию
+## https://test-renue.vercel.app/
+
 ## Чтобы запустить проект необходимо:
 
 ### 1. Cклонить его с помощью команды
