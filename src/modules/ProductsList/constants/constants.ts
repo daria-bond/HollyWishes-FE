@@ -27,7 +27,7 @@ export const mockupProducts: IProduct[] = [
   },
   {
     name: "Американо",
-    price: 92,
+    price: 50,
     quantity: 36,
     id: 5,
   },
@@ -48,11 +48,5 @@ export const mockupProducts: IProduct[] = [
     price: 147,
     quantity: 24,
     id: 8,
-  },
-  {
-    name: "Матча",
-    price: 126,
-    quantity: 0,
-    id: 9,
   },
 ];

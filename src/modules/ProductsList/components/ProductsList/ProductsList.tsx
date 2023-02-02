@@ -1,44 +1,52 @@
-import React, { FC, useCallback } from "react";
+import React, { FC, useCallback, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
 import ProductCard from "../ProductCard/ProductCard";
 import { removeMoney } from "../../../MoneyReceiver/store/moneyReducer";
 import { decrementProductQuantity } from "../../store/reducer";
 import "../ProductsList/ProductsList.scss";
+import ModalBox from "../../../../ui/Modal/Modal";
 
-interface IProps {
-  addProductsToOrder: (products: number[]) => void;
-}
-
-export const ProductsList: FC<IProps> = ({ addProductsToOrder }) => {
+export const ProductsList: FC = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState<JSX.Element>(<></>);
   const products = useAppSelector((state) => state.products);
   const moneyAmount = useAppSelector((state) => state.moneyAmount);
   const dispatch = useAppDispatch();
+
+  const handleClose = () => setOpenModal(false);
 
   const onClick = useCallback(
     (id: number, price: number, name: string) => {
       if (moneyAmount >= price) {
         dispatch(removeMoney(price));
         dispatch(decrementProductQuantity(id));
-        addProductsToOrder([id]);
-        alert(`Вы купили ${name}`);
+        setModalMessage(<div>Вы купили {name}</div>);
       } else {
-        alert("Денежек не хватает :(");
+        setModalMessage(<div>Денежек не хватает :(</div>);
       }
+      setOpenModal(true);
     },
-    [addProductsToOrder, dispatch, moneyAmount]
+    [dispatch, moneyAmount]
   );
 
   return (
-    <div className="product-list-container">
-      {products.map((product) => (
-        <ProductCard
-          name={product.name}
-          price={product.price}
-          quantity={product.quantity}
-          key={product.id}
-          onClick={() => onClick(product.id, product.price, product.name)}
-        />
-      ))}
-    </div>
+    <>
+      <div className="product-list-container">
+        {products.map((product) => (
+          <ProductCard
+            name={product.name}
+            price={product.price}
+            quantity={product.quantity}
+            key={product.id}
+            onClick={() => onClick(product.id, product.price, product.name)}
+          />
+        ))}
+      </div>
+      <ModalBox
+        onClose={handleClose}
+        modalMessage={modalMessage}
+        openModalBox={openModal}
+      />
+    </>
   );
 };

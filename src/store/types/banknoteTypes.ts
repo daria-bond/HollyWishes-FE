@@ -20,16 +20,12 @@ export const banknoteDenominals = {
   [BanknoteEnum.One]: 1,
 };
 
-export type AllowingReceivingBanknotes =
-  | BanknoteEnum.OneThousand
-  | BanknoteEnum.FiveHundred
-  | BanknoteEnum.OneHundred
-  | BanknoteEnum.Fifty;
-
-export type AllowingChangeBanknotes =
-  | BanknoteEnum.FiveHundred
-  | BanknoteEnum.OneHundred
-  | BanknoteEnum.Fifty
-  | BanknoteEnum.Ten
-  | BanknoteEnum.Five
-  | BanknoteEnum.One;
+export interface IBanknotesState {
+  [BanknoteEnum.OneThousand]: number;
+  [BanknoteEnum.FiveHundred]: number;
+  [BanknoteEnum.OneHundred]: number;
+  [BanknoteEnum.Fifty]: number;
+  [BanknoteEnum.Ten]: number;
+  [BanknoteEnum.Five]: number;
+  [BanknoteEnum.One]: number;
+}

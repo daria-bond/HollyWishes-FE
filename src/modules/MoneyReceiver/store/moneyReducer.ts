@@ -12,9 +12,12 @@ export const MoneySlice = createSlice({
     removeMoney: (state, { payload }: PayloadAction<number>) => {
       return state - payload;
     },
+    setMoney: (state, { payload }: PayloadAction<number>) => {
+      return payload;
+    },
   },
 });
 
-export const { addMoney, removeMoney } = MoneySlice.actions;
+export const { addMoney, removeMoney, setMoney } = MoneySlice.actions;
 
 export default MoneySlice.reducer;
